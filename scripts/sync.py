@@ -139,6 +139,17 @@ def clone_upstream(upstream: str) -> Path:
     return tmp / "repo"
 
 
+def get_upstream(args) -> tuple[Path, bool]:
+    """返回（上游目录, 是否临时目录）。--upstream-dir 可复用本地已有副本。"""
+    if args.upstream_dir:
+        path = Path(args.upstream_dir).resolve()
+        if not (path / "update-manifest.json").is_file():
+            raise SystemExit(f"--upstream-dir 不是有效的上游副本：{path}")
+        print(f"复用本地上游副本 {path}")
+        return path, False
+    return clone_upstream(args.upstream), True
+
+
 def read_current_version(up: Path) -> str:
     """从 update-manifest.json 读取当前版本号。"""
     manifest = up / "update-manifest.json"
@@ -475,6 +486,18 @@ def ensure_identity(work: Path) -> None:
         run(["git", "config", "user.name", name], cwd=work, quiet=True)
 
 
+def current_branch(work: Path) -> str:
+    """确定分支名。Actions 里 schedule 触发时是 detached HEAD，
+    必须回退到 GITHUB_REF_NAME，否则会 push 到 refs/heads/HEAD。"""
+    for candidate in (os.environ.get("GITHUB_REF_NAME", "").strip(),
+                      os.environ.get("GITHUB_DEFAULT_BRANCH", "").strip()):
+        if candidate and candidate != "HEAD":
+            return candidate
+    branch = run(["git", "rev-parse", "--abbrev-ref", "HEAD"],
+                 cwd=work, check=False, quiet=True).stdout.strip()
+    return branch if branch and branch != "HEAD" else "main"
+
+
 def commit_and_push(work: Path, message: str, push: bool) -> bool:
     ensure_identity(work)
     run(["git", "add", "-A"], cwd=work, quiet=True)
@@ -486,8 +509,8 @@ def commit_and_push(work: Path, message: str, push: bool) -> bool:
     run(["git", "commit", "-m", message], cwd=work, quiet=True)
     print(f"已提交：{message}")
     if push:
-        branch = run(["git", "rev-parse", "--abbrev-ref", "HEAD"], cwd=work, quiet=True).stdout.strip()
-        run(["git", "push", "origin", f"HEAD:{branch}"], cwd=work)
+        branch = current_branch(work)
+        run(["git", "push", "origin", f"HEAD:refs/heads/{branch}"], cwd=work)
         print(f"已推送到 origin/{branch}")
     return True
 
@@ -496,7 +519,7 @@ def commit_and_push(work: Path, message: str, push: bool) -> bool:
 # 模式实现
 # --------------------------------------------------------------------------- #
 def run_lite(args, owner: str, repo: str, slug: str) -> None:
-    up = clone_upstream(args.upstream)
+    up, temp = get_upstream(args)
     try:
         version = read_current_version(up)
         notes = read_current_notes(up)
@@ -517,17 +540,20 @@ def run_lite(args, owner: str, repo: str, slug: str) -> None:
             print("\n以上为 --dry-run 结果，未写入任何文件。")
             return
 
-        written, removed = sync_tree(up, args.work)
-        print(f"文件树同步完成：写入 {written} 个，移除 {removed} 个")
+        if not args.publish_only:
+            written, removed = sync_tree(up, args.work)
+            print(f"文件树同步完成：写入 {written} 个，移除 {removed} 个")
 
-        if not args.no_rewrite:
-            changed = rewrite_in_place(args.work, owner, repo)
-            if changed:
-                print(f"已改写内链的文件：{', '.join(changed)}")
-            inject_banner(args.work, owner, repo)
+            if not args.no_rewrite:
+                changed = rewrite_in_place(args.work, owner, repo)
+                if changed:
+                    print(f"已改写内链的文件：{', '.join(changed)}")
+                inject_banner(args.work, owner, repo)
 
-        message = f"sync: 上游 APMM {version}"
-        commit_and_push(args.work, message, args.push)
+            message = f"sync: 上游 APMM {version}"
+            commit_and_push(args.work, message, args.push)
+        else:
+            print("仅发布模式：跳过文件树同步与提交")
 
         if not args.no_publish:
             plan = build_plan(up, version, notes)
@@ -540,7 +566,8 @@ def run_lite(args, owner: str, repo: str, slug: str) -> None:
             count = publish(plan, slug, args.force, dry_run=False)
             print(f"Release 处理完毕，涉及 {count} 个附件")
     finally:
-        shutil.rmtree(up.parent, ignore_errors=True)
+        if temp:
+            shutil.rmtree(up.parent, ignore_errors=True)
 
 
 def run_full(args, owner: str, repo: str, slug: str) -> None:
@@ -583,6 +610,10 @@ def main() -> None:
                         help="full 模式推送的目标分支名")
     parser.add_argument("--push", action="store_true", help="同步后提交并推送")
     parser.add_argument("--no-publish", action="store_true", help="只同步文件，不创建 Release")
+    parser.add_argument("--publish-only", action="store_true",
+                        help="跳过文件树同步与提交，只创建 / 补全 Release")
+    parser.add_argument("--upstream-dir", default="",
+                        help="复用本地已有的上游副本，免去重新克隆")
     parser.add_argument("--no-rewrite", action="store_true",
                         help="保持清单原样，不改写 cnb.cool 链接")
     parser.add_argument("--force", action="store_true", help="强制重传已存在的 Release 附件")

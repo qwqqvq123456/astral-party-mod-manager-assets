@@ -67,6 +67,9 @@ python3 scripts/sync.py --mode lite --push
 # 只同步文件，不发 Release
 python3 scripts/sync.py --mode lite --push --no-publish
 
+# 跳过文件同步，只创建 / 补全 Release（配合本地已有副本可省去重新克隆）
+python3 scripts/sync.py --publish-only --upstream-dir ../上游副本
+
 # 保持清单原样，不改写 cnb.cool 链接
 python3 scripts/sync.py --mode lite --push --no-rewrite
 
