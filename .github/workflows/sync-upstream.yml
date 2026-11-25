@@ -20,6 +20,10 @@ on:
         description: "强制重传已存在的 Release 附件"
         type: boolean
         default: false
+      keep:
+        description: "版本类 Release 保留最近几个（0=全部保留）"
+        type: number
+        default: 1
 
 permissions:
   contents: write
@@ -52,8 +56,10 @@ jobs:
           set -euo pipefail
           MODE="${{ inputs.mode || 'lite' }}"
           FORCE="${{ inputs.force || 'false' }}"
+          KEEP="${{ inputs.keep }}"
+          if [ -z "$KEEP" ]; then KEEP=1; fi
 
-          ARGS=(--mode "$MODE" --push)
+          ARGS=(--mode "$MODE" --push --keep-releases "$KEEP")
           if [ "$MODE" = "full" ]; then
             ARGS+=(--token "$GH_TOKEN")
           fi
