@@ -444,6 +444,57 @@ def check_links(work: Path, plan: list[dict], owner: str, repo: str) -> list[str
     return missing
 
 
+VERSION_TAG_RE = re.compile(r"^v(\d+)\.(\d+)\.(\d+)$")
+
+
+def limit_versions(plan: list[dict], keep: int) -> list[dict]:
+    """只保留最新 keep 个版本类 Release，其余从计划中剔除（不再上传）。
+    keep <= 0 表示全部保留。预览包、旧版兼容包不受影响。"""
+    if keep <= 0:
+        return plan
+    versions = [item for item in plan if VERSION_TAG_RE.match(item["tag"])]
+    if len(versions) <= keep:
+        return plan
+    versions.sort(
+        key=lambda item: tuple(int(x) for x in VERSION_TAG_RE.match(item["tag"]).groups()),
+        reverse=True,
+    )
+    keep_tags = {item["tag"] for item in versions[:keep]}
+    return [item for item in plan
+            if not VERSION_TAG_RE.match(item["tag"]) or item["tag"] in keep_tags]
+
+
+def prune_releases(slug: str, keep: int, dry_run: bool) -> int:
+    """删除超出保留数量的历史版本 Release，连 tag 一并清理。"""
+    if keep <= 0:
+        return 0
+    proc = run(["gh", "release", "list", "--repo", slug, "--limit", "200",
+                "--json", "tagName"], check=False, quiet=True)
+    if proc.returncode != 0:
+        print("  无法列出已有 Release，跳过清理")
+        return 0
+    try:
+        tags = [row["tagName"] for row in json.loads(proc.stdout or "[]")]
+    except (json.JSONDecodeError, KeyError, TypeError):
+        return 0
+
+    versions = [t for t in tags if VERSION_TAG_RE.match(t)]
+    if len(versions) <= keep:
+        return 0
+    versions.sort(key=lambda t: tuple(int(x) for x in VERSION_TAG_RE.match(t).groups()),
+                  reverse=True)
+
+    stale = versions[keep:]
+    for tag in stale:
+        if dry_run:
+            print(f"  [计划] 删除历史 Release {tag}（连 tag）")
+            continue
+        run(["gh", "release", "delete", tag, "--repo", slug, "--yes", "--cleanup-tag"],
+            quiet=True)
+        print(f"  - 已删除历史 Release {tag}")
+    return len(stale)
+
+
 def publish(plan: list[dict], slug: str, force: bool, dry_run: bool) -> int:
     """创建 / 补全 Release，返回上传的文件数。"""
     uploaded = 0
@@ -538,7 +589,7 @@ def run_lite(args, owner: str, repo: str, slug: str) -> None:
         print(f"上游当前版本：{version}")
 
         if args.dry_run:
-            plan = build_plan(up, version, notes)
+            plan = limit_versions(build_plan(up, version, notes), args.keep_releases)
             tracked = [p for p in up.rglob("*") if p.is_file()
                        and should_track(p.relative_to(up).as_posix())]
             size = sum(p.stat().st_size for p in tracked)
@@ -549,6 +600,9 @@ def run_lite(args, owner: str, repo: str, slug: str) -> None:
                 print(f"  ... 其余 {len(tracked) - 20} 个")
             print(f"\nRelease 计划（共 {len(plan)} 个）：")
             publish(plan, slug, args.force, dry_run=True)
+            if args.keep_releases > 0:
+                print("\n历史版本清理：")
+                prune_releases(slug, args.keep_releases, dry_run=True)
             print("\n以上为 --dry-run 结果，未写入任何文件。")
             return
 
@@ -568,7 +622,7 @@ def run_lite(args, owner: str, repo: str, slug: str) -> None:
             print("仅发布模式：跳过文件树同步与提交")
 
         if not args.no_publish:
-            plan = build_plan(up, version, notes)
+            plan = limit_versions(build_plan(up, version, notes), args.keep_releases)
             missing = check_links(args.work, plan, owner, repo)
             if missing:
                 print("\n警告：以下清单引用没有对应的附件，发布后会 404：")
@@ -577,6 +631,11 @@ def run_lite(args, owner: str, repo: str, slug: str) -> None:
             print(f"\n发布 Release（共 {len(plan)} 个）")
             count = publish(plan, slug, args.force, dry_run=False)
             print(f"Release 处理完毕，涉及 {count} 个附件")
+
+            if args.keep_releases > 0:
+                removed = prune_releases(slug, args.keep_releases, dry_run=False)
+                if removed:
+                    print(f"已清理 {removed} 个历史版本 Release")
     finally:
         if temp:
             shutil.rmtree(up.parent, ignore_errors=True)
@@ -628,6 +687,8 @@ def main() -> None:
                         help="复用本地已有的上游副本，免去重新克隆")
     parser.add_argument("--no-rewrite", action="store_true",
                         help="保持清单原样，不改写 cnb.cool 链接")
+    parser.add_argument("--keep-releases", type=int, default=1, metavar="N",
+                        help="版本类 Release 只保留最新 N 个，旧的连 tag 一起删除；0=全部保留（默认 1）")
     parser.add_argument("--force", action="store_true", help="强制重传已存在的 Release 附件")
     parser.add_argument("--dry-run", action="store_true", help="只打印计划，不写文件不推送")
     parser.add_argument("--token", default=os.environ.get("GH_TOKEN", ""),
