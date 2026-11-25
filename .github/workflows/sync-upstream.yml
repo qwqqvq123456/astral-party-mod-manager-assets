@@ -23,7 +23,7 @@ on:
       keep:
         description: "版本类 Release 保留最近几个（0=全部保留）"
         type: number
-        default: 1
+        default: 3
 
 permissions:
   contents: write
@@ -57,7 +57,7 @@ jobs:
           MODE="${{ inputs.mode || 'lite' }}"
           FORCE="${{ inputs.force || 'false' }}"
           KEEP="${{ inputs.keep }}"
-          if [ -z "$KEEP" ]; then KEEP=1; fi
+          if [ -z "$KEEP" ]; then KEEP=3; fi
 
           ARGS=(--mode "$MODE" --push --keep-releases "$KEEP")
           if [ "$MODE" = "full" ]; then

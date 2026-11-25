@@ -23,18 +23,19 @@
 
 | 标签 | 对应内容 | 是否保留历史 |
 | --- | --- | --- |
-| `v0.4.11` | `releases/<版本>/` 下的标准发行包（便携版 / 安装版 / 兼容包 + sha256） | **只保留最新一个** |
+| `v0.4.11` | `releases/<版本>/` 下的标准发行包（便携版 / 安装版 / 兼容包 + sha256） | **保留最近 3 个** |
 | `preview-v4` | `bundles/preview-v4/` 完整原图预览包 | 长期保留 |
 | `preview-legacy` | `bundles/` 根目录的 v3 兼容预览包 | 长期保留 |
 | `legacy` | `releases/` 根目录的历史直链安装包 | 长期保留 |
 
-**版本只保留最新。** 上游放出 0.4.12 后，`v0.4.11` 的 Release 和 tag 会被自动删除，
-页面上只留 `v0.4.12`。这样 Releases 页面始终只有一套可用安装包，不会被十几个旧版本
-淹掉，也不会累积占用空间。
+**版本只保留最近 3 个。** 上游放出 0.4.14 后，`v0.4.11` 的 Release 和 tag 会被自动删除，
+页面保留 0.4.14 / 0.4.13 / 0.4.12。这样 Releases 页面不会被十几个旧版本淹掉，也不会
+累积占用空间，同时留出三个版本的缓冲余量。
 
 预览包和旧版兼容包不是「版本」，是三条并行的分发通道，所以不受清理影响。
+语义版本最高的 Release 会自动带 Latest 标记，即使补传了旧版本也不会被顶掉。
 
-想保留几个历史版本，用 `--keep-releases N` 调整（`0` 表示全部保留）。
+想调整保留数量，用 `--keep-releases N`（`0` 表示全部保留）。
 
 ---
 
@@ -60,7 +61,7 @@ Actions → 同步上游资产 → Run workflow：
 - `mode = full`：完整镜像到 `upstream-full` 分支，包含全部二进制和历史，用于
   「我需要 `git clone` 拿到完整文件」的场景。因为完整克隆上游约 330 MB，单次运行
   需要几分钟。
-- `keep = 1`：版本类 Release 保留最近几个，默认 1（只留最新），填 0 则全部保留
+- `keep = 3`：版本类 Release 保留最近几个，默认 3，填 0 则全部保留
 - `force = true`：强制重传所有附件（上游静默替换了同名文件时用）
 
 ---
@@ -71,11 +72,11 @@ Actions → 同步上游资产 → Run workflow：
 # 只看计划，不写文件、不推送、不发 Release
 python3 scripts/sync.py --mode lite --dry-run
 
-# 同步并推送 + 发布 Release（默认只保留最新版本）
+# 同步并推送 + 发布 Release（默认保留最近 3 个版本）
 python3 scripts/sync.py --mode lite --push
 
-# 保留最近 3 个历史版本
-python3 scripts/sync.py --mode lite --push --keep-releases 3
+# 保留最近 5 个历史版本
+python3 scripts/sync.py --mode lite --push --keep-releases 5
 
 # 全部历史版本都保留（关闭清理）
 python3 scripts/sync.py --mode lite --push --keep-releases 0

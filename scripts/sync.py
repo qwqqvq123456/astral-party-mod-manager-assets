@@ -495,6 +495,31 @@ def prune_releases(slug: str, keep: int, dry_run: bool) -> int:
     return len(stale)
 
 
+def mark_latest_release(slug: str, dry_run: bool = False) -> None:
+    """确保语义版本最高的 Release 带 Latest 标记（补传旧版本时会被抢走）。"""
+    proc = run(["gh", "release", "list", "--repo", slug, "--limit", "200",
+                "--json", "tagName,isLatest"], check=False, quiet=True)
+    if proc.returncode != 0:
+        return
+    try:
+        rows = json.loads(proc.stdout or "[]")
+    except (json.JSONDecodeError, TypeError):
+        return
+
+    versions = [r["tagName"] for r in rows if VERSION_TAG_RE.match(r.get("tagName", ""))]
+    if not versions:
+        return
+    latest = max(versions,
+                 key=lambda t: tuple(int(x) for x in VERSION_TAG_RE.match(t).groups()))
+    if any(r.get("tagName") == latest and r.get("isLatest") for r in rows):
+        return
+    if dry_run:
+        print(f"  [计划] 将 {latest} 标记为 Latest")
+        return
+    run(["gh", "release", "edit", latest, "--repo", slug, "--latest"], quiet=True)
+    print(f"  ↑ 已将 {latest} 标记为 Latest")
+
+
 def publish(plan: list[dict], slug: str, force: bool, dry_run: bool) -> int:
     """创建 / 补全 Release，返回上传的文件数。"""
     uploaded = 0
@@ -631,6 +656,7 @@ def run_lite(args, owner: str, repo: str, slug: str) -> None:
             print(f"\n发布 Release（共 {len(plan)} 个）")
             count = publish(plan, slug, args.force, dry_run=False)
             print(f"Release 处理完毕，涉及 {count} 个附件")
+            mark_latest_release(slug)
 
             if args.keep_releases > 0:
                 removed = prune_releases(slug, args.keep_releases, dry_run=False)
@@ -687,8 +713,8 @@ def main() -> None:
                         help="复用本地已有的上游副本，免去重新克隆")
     parser.add_argument("--no-rewrite", action="store_true",
                         help="保持清单原样，不改写 cnb.cool 链接")
-    parser.add_argument("--keep-releases", type=int, default=1, metavar="N",
-                        help="版本类 Release 只保留最新 N 个，旧的连 tag 一起删除；0=全部保留（默认 1）")
+    parser.add_argument("--keep-releases", type=int, default=3, metavar="N",
+                        help="版本类 Release 只保留最新 N 个，旧的连 tag 一起删除；0=全部保留（默认 3）")
     parser.add_argument("--force", action="store_true", help="强制重传已存在的 Release 附件")
     parser.add_argument("--dry-run", action="store_true", help="只打印计划，不写文件不推送")
     parser.add_argument("--token", default=os.environ.get("GH_TOKEN", ""),
