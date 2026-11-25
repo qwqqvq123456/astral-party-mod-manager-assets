@@ -2,6 +2,7 @@
 > 本仓库由自动化任务每 6 小时同步自上游 `cnb.cool/astral-weird-egg/astral-party-mod-manager-assets`。
 > 仓库内只保存清单与说明文件，安装包 / 预览包 / 工坊资源包以附件形式存放在
 > [Releases](https://github.com/qwqqvq123456/astral-party-mod-manager-assets/releases) 页面。需要完整历史镜像请查看 `upstream-full` 分支。
+> 同步机制、手动操作与常见问题见 [MIRROR.md](https://github.com/qwqqvq123456/astral-party-mod-manager-assets/blob/main/MIRROR.md)。
 
 # APMM 下载与资源
 

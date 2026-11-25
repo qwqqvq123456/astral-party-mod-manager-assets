@@ -294,6 +294,7 @@ MIRROR_BANNER = """> **镜像说明**
 > 本仓库由自动化任务每 6 小时同步自上游 `cnb.cool/astral-weird-egg/astral-party-mod-manager-assets`。
 > 仓库内只保存清单与说明文件，安装包 / 预览包 / 工坊资源包以附件形式存放在
 > [Releases]({gh}/releases) 页面。需要完整历史镜像请查看 `upstream-full` 分支。
+> 同步机制、手动操作与常见问题见 [MIRROR.md]({gh}/blob/main/MIRROR.md)。
 
 """
 
@@ -305,9 +306,20 @@ def inject_banner(work: Path, owner: str, repo: str) -> None:
     gh = f"https://github.com/{owner}/{repo}"
     banner = MIRROR_BANNER.format(gh=gh)
     text = readme.read_text(encoding="utf-8")
-    if "**镜像说明**" in text:
+
+    if text.startswith("> **镜像说明**"):
+        # 已有时替换旧的 banner（覆盖到第一行正文之前），便于后续调整文案
+        lines = text.splitlines(keepends=True)
+        index = 0
+        while index < len(lines) and (lines[index].startswith(">") or not lines[index].strip()):
+            index += 1
+        text = banner + "".join(lines[index:])
+    elif "**镜像说明**" in text:
         return
-    readme.write_text(banner + text, encoding="utf-8")
+    else:
+        text = banner + text
+
+    readme.write_text(text, encoding="utf-8")
 
 
 # --------------------------------------------------------------------------- #
