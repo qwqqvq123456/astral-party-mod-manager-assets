@@ -1,0 +1,29 @@
+{
+  "schema": 2,
+  "bundles": [
+    {
+      "key": "cards",
+      "version": "4",
+      "bundleUrl": "https://github.com/qwqqvq123456/astral-party-mod-manager-assets/releases/download/preview-v4/astral-party-previews-cards-preview-v4-compat.zip",
+      "sha256": "b1c11c3b12fd4f2c78854dba060e503f4e2da07a937356de09f905ca24b4160d",
+      "bytes": 4112380,
+      "files": 157
+    },
+    {
+      "key": "heroes",
+      "version": "4",
+      "bundleUrl": "https://github.com/qwqqvq123456/astral-party-mod-manager-assets/releases/download/preview-v4/astral-party-previews-heroes-preview-v4-compat.zip",
+      "sha256": "638650cf423b1a8e8fb3d8fec07f4fb65134b4e2ea8623c2108382ccf3503ffe",
+      "bytes": 63790978,
+      "files": 1371
+    },
+    {
+      "key": "monsters",
+      "version": "4",
+      "bundleUrl": "https://github.com/qwqqvq123456/astral-party-mod-manager-assets/releases/download/preview-v4/astral-party-previews-monsters-preview-v4-compat.zip",
+      "sha256": "f1f4183988bc32dd22667beb3ca09f6aa40656d1986a246ea72213570138788d",
+      "bytes": 9729698,
+      "files": 191
+    }
+  ]
+}

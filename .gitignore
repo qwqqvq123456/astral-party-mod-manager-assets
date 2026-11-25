@@ -1,0 +1,10 @@
+# 初始化模板，复制到仓库根后即失效
+template/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# 系统
+.DS_Store
+Thumbs.db

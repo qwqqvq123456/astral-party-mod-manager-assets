@@ -1,0 +1,487 @@
+{
+  "schema": 1,
+  "works": [
+    {
+      "id": "profile-photo-112",
+      "publishedId": "100001",
+      "title": "角色 112 头像测试包",
+      "description": "角色 112 头像资源，用于验证创意工坊的安装、更新与卸载。",
+      "category": "角色头像",
+      "tags": [
+        {
+          "name": "头像",
+          "highlight": false
+        },
+        {
+          "name": "角色 112",
+          "highlight": false
+        },
+        {
+          "name": "测试作品",
+          "highlight": false
+        }
+      ],
+      "version": "1.0.0",
+      "cover": "profile-photo-112-cover.png",
+      "archive": "profile-photo-112-v1.0.0.zip",
+      "sha256": "b763aa3d980b909270bf407f1535a3abbc1af874456d5b60c064c2ae62d5a4ea",
+      "bytes": 148318,
+      "files": [
+        {
+          "name": "UT_Hero_ProfilePhoto_112.png",
+          "sha256": "28cac863c8fa2208a71f79928ecae80a48f534557b4f841c8a019b9b5258c58e",
+          "bytes": 30058
+        },
+        {
+          "name": "UT_Hero_ProfilePhoto_112_01.png",
+          "sha256": "28cac863c8fa2208a71f79928ecae80a48f534557b4f841c8a019b9b5258c58e",
+          "bytes": 30058
+        },
+        {
+          "name": "UT_Hero_ProfilePhoto_112_02.png",
+          "sha256": "28cac863c8fa2208a71f79928ecae80a48f534557b4f841c8a019b9b5258c58e",
+          "bytes": 30058
+        },
+        {
+          "name": "UT_Hero_ProfilePhoto_112_03.png",
+          "sha256": "28cac863c8fa2208a71f79928ecae80a48f534557b4f841c8a019b9b5258c58e",
+          "bytes": 30058
+        },
+        {
+          "name": "UT_Hero_ProfilePhoto_112_Max.png",
+          "sha256": "28cac863c8fa2208a71f79928ecae80a48f534557b4f841c8a019b9b5258c58e",
+          "bytes": 30058
+        }
+      ]
+    },
+    {
+      "id": "profile-photo-123",
+      "publishedId": "100002",
+      "title": "角色 123 头像测试包",
+      "description": "角色 123 头像资源，用于验证创意工坊的安装、更新与卸载。",
+      "category": "角色头像",
+      "tags": [
+        {
+          "name": "头像",
+          "highlight": false
+        },
+        {
+          "name": "角色 123",
+          "highlight": false
+        },
+        {
+          "name": "测试作品",
+          "highlight": false
+        }
+      ],
+      "version": "1.0.0",
+      "cover": "profile-photo-123-cover.png",
+      "archive": "profile-photo-123-v1.0.0.zip",
+      "sha256": "46e4e2ee3b82e793edb830f6801d776ebd33f332ef03a7f88829a94a3003efbb",
+      "bytes": 203706,
+      "files": [
+        {
+          "name": "UT_Hero_ProfilePhoto_123.png",
+          "sha256": "831dbbd161017434b5b85c31ebe60edebb57cd6f7fe0142410533e840336d14d",
+          "bytes": 51090
+        },
+        {
+          "name": "UT_Hero_ProfilePhoto_123_01.png",
+          "sha256": "831dbbd161017434b5b85c31ebe60edebb57cd6f7fe0142410533e840336d14d",
+          "bytes": 51090
+        },
+        {
+          "name": "UT_Hero_ProfilePhoto_123_02.png",
+          "sha256": "831dbbd161017434b5b85c31ebe60edebb57cd6f7fe0142410533e840336d14d",
+          "bytes": 51090
+        },
+        {
+          "name": "UT_Hero_ProfilePhoto_123_Max.png",
+          "sha256": "831dbbd161017434b5b85c31ebe60edebb57cd6f7fe0142410533e840336d14d",
+          "bytes": 51090
+        }
+      ]
+    },
+    {
+      "id": "profile-photo-120",
+      "publishedId": "100003",
+      "title": "角色 120 头像测试包",
+      "description": "角色 120 头像资源，用于验证创意工坊的安装、更新与卸载。",
+      "category": "角色头像",
+      "tags": [
+        {
+          "name": "头像",
+          "highlight": false
+        },
+        {
+          "name": "角色 120",
+          "highlight": false
+        },
+        {
+          "name": "测试作品",
+          "highlight": false
+        }
+      ],
+      "version": "1.0.0",
+      "cover": "profile-photo-120-cover.png",
+      "archive": "profile-photo-120-v1.0.0.zip",
+      "sha256": "9290db20bc9113ed155d4d6beabfeb7727b0f8e9af908abdf5ccbedd001d2002",
+      "bytes": 214374,
+      "files": [
+        {
+          "name": "UT_Hero_ProfilePhoto_120.png",
+          "sha256": "7910dd404f1f3e2f43a407d2cdd443015ae481ca23e5870721885797d6becbdd",
+          "bytes": 35935
+        },
+        {
+          "name": "UT_Hero_ProfilePhoto_120_01.png",
+          "sha256": "7910dd404f1f3e2f43a407d2cdd443015ae481ca23e5870721885797d6becbdd",
+          "bytes": 35935
+        },
+        {
+          "name": "UT_Hero_ProfilePhoto_120_02.png",
+          "sha256": "7910dd404f1f3e2f43a407d2cdd443015ae481ca23e5870721885797d6becbdd",
+          "bytes": 35935
+        },
+        {
+          "name": "UT_Hero_ProfilePhoto_120_03.png",
+          "sha256": "7910dd404f1f3e2f43a407d2cdd443015ae481ca23e5870721885797d6becbdd",
+          "bytes": 35935
+        },
+        {
+          "name": "UT_Hero_ProfilePhoto_120_04.png",
+          "sha256": "7910dd404f1f3e2f43a407d2cdd443015ae481ca23e5870721885797d6becbdd",
+          "bytes": 35935
+        },
+        {
+          "name": "UT_Hero_ProfilePhoto_120_Max.png",
+          "sha256": "7910dd404f1f3e2f43a407d2cdd443015ae481ca23e5870721885797d6becbdd",
+          "bytes": 35935
+        }
+      ]
+    },
+    {
+      "id": "profile-photo-122",
+      "publishedId": "100004",
+      "title": "角色 122 头像测试包",
+      "description": "角色 122 头像资源，用于验证创意工坊的安装、更新与卸载。",
+      "category": "角色头像",
+      "tags": [
+        {
+          "name": "头像",
+          "highlight": false
+        },
+        {
+          "name": "角色 122",
+          "highlight": false
+        },
+        {
+          "name": "测试作品",
+          "highlight": false
+        }
+      ],
+      "version": "1.0.0",
+      "cover": "profile-photo-122-cover.png",
+      "archive": "profile-photo-122-v1.0.0.zip",
+      "sha256": "8c269d869f507ca2c78ea049d2d68923354f2ed0f68693ab0bed19c894fb6d44",
+      "bytes": 157622,
+      "files": [
+        {
+          "name": "UT_Hero_ProfilePhoto_122.png",
+          "sha256": "712311b9d17af36720b455a6b310cec9e04942b319c3f888d263dfa91b9f5a9c",
+          "bytes": 40712
+        },
+        {
+          "name": "UT_Hero_ProfilePhoto_122_01.png",
+          "sha256": "712311b9d17af36720b455a6b310cec9e04942b319c3f888d263dfa91b9f5a9c",
+          "bytes": 40712
+        },
+        {
+          "name": "UT_Hero_ProfilePhoto_122_02.png",
+          "sha256": "712311b9d17af36720b455a6b310cec9e04942b319c3f888d263dfa91b9f5a9c",
+          "bytes": 40712
+        },
+        {
+          "name": "UT_Hero_ProfilePhoto_122_Max.png",
+          "sha256": "712311b9d17af36720b455a6b310cec9e04942b319c3f888d263dfa91b9f5a9c",
+          "bytes": 40712
+        }
+      ]
+    },
+    {
+      "id": "nun-nan-card-update-1",
+      "publishedId": "100005",
+      "title": "NunNan系列卡牌替换更新第一弹",
+      "description": "NunNan系列卡牌替换更新第一弹\nMOD作者：@si_ser\n授权画师：@NunNan_0011\nhttps://x.com/i/chat/930441324989333504-1940636207572307972\nhttps://arca.live/u/@NN_",
+      "category": "卡面",
+      "tags": [
+        {
+          "name": "卡面",
+          "highlight": true
+        }
+      ],
+      "version": "1.0.0",
+      "cover": "nun-nan-card-update-1-cover.png",
+      "archive": "nun-nan-card-update-1-v1.0.0.zip",
+      "sha256": "1b13c0a7edae126fb7812cb6e01b560945ad58bc872da7b5976d905e641f3e78",
+      "bytes": 742336,
+      "files": [
+        {
+          "name": "UT_HandCard_10001.png",
+          "sha256": "3b79d74011e5b933848ff9699562191e09f970609dc44543d592832f6453d3bc",
+          "bytes": 137552
+        },
+        {
+          "name": "UT_HandCard_10003.png",
+          "sha256": "e28849e6d5e02b6772517885291e64accd693d2c14aa873b1defa301250579b0",
+          "bytes": 147710
+        },
+        {
+          "name": "UT_HandCard_10005.png",
+          "sha256": "74f10dfb1a69e7671d34838ecec5428dd62184dc544644b57b81af02bb7e1df4",
+          "bytes": 136951
+        },
+        {
+          "name": "UT_HandCard_10007.png",
+          "sha256": "542e6fbeb9e7a3e052bbf7f0117c61aa82c6d7c6a73e6ba79dbec78dabd21e2f",
+          "bytes": 157116
+        },
+        {
+          "name": "UT_HandCard_10007_02.png",
+          "sha256": "dbf36345d7629556689cb56fae65110e4cc5bba23332f2f7d40688b3e1f10e1e",
+          "bytes": 162839
+        }
+      ]
+    },
+    {
+      "id": "nun-nan-hand-event",
+      "publishedId": "100006",
+      "title": "NunNan系列手牌+事件替换",
+      "description": "NunNan系列手牌+事件替换\nMOD作者：@si_ser\n授权画师：@NunNan_0011\nhttps://x.com/i/chat/930441324989333504-1940636207572307972\nhttps://arca.live/u/@NN_",
+      "category": "卡面",
+      "tags": [
+        {
+          "name": "卡面",
+          "highlight": true
+        }
+      ],
+      "version": "1.0.0",
+      "cover": "nun-nan-hand-event-cover.png",
+      "archive": "nun-nan-hand-event-v1.0.0.zip",
+      "sha256": "d958303c952222ce5f821e8b8a216b8cc20d16ff6c1f3c1106bbd9e91654b604",
+      "bytes": 4958389,
+      "files": [
+        {
+          "name": "UT_HandCard_10001.png",
+          "sha256": "db206a7f942bf7bed26691ef5388f12a37867cd3a9c4cba2405de518ffef1240",
+          "bytes": 85744
+        },
+        {
+          "name": "UT_HandCard_10002.png",
+          "sha256": "671d35f72cc0121a40d406339b56479f30884f0d00880425fd373a4657fc413e",
+          "bytes": 78036
+        },
+        {
+          "name": "UT_HandCard_10003.png",
+          "sha256": "62e4792d960817dc9ac0b61154633f912736a4e5ada24d815920ec2d9b2d4ec1",
+          "bytes": 81048
+        },
+        {
+          "name": "UT_HandCard_10004.png",
+          "sha256": "6acf86ef4f7f8ce661c4a73ef67490b3f9e1d6efaadc110f09be23c4fb8f983c",
+          "bytes": 83464
+        },
+        {
+          "name": "UT_HandCard_10005.png",
+          "sha256": "e8c5522dbce3224244af5af08b84a175c4fd0a13e856efb065135aa7e9ef9c37",
+          "bytes": 128588
+        },
+        {
+          "name": "UT_HandCard_10006.png",
+          "sha256": "68e27c544046181ef1125000ef58e2ebfe265da5f563fd32a73a5df314491a5b",
+          "bytes": 100015
+        },
+        {
+          "name": "UT_HandCard_10007.png",
+          "sha256": "484434e3e01dafe17f1869319f8858a6c58b06bf38f561573cadb8fb6c759f83",
+          "bytes": 153655
+        },
+        {
+          "name": "UT_HandCard_10008.png",
+          "sha256": "3b44e6c52b2b0c6ed5607bf9504441218ffdb7ca343e73d76e4467bf324c5d9f",
+          "bytes": 127793
+        },
+        {
+          "name": "UT_HandCard_10009.png",
+          "sha256": "cae4ca2dc764d293bb196119721935fc8ddcc3c87fe0f151b0480e2a6bde96b4",
+          "bytes": 75951
+        },
+        {
+          "name": "UT_HandCard_10010.png",
+          "sha256": "0ccbce05e6e82f9dcfcac4f5fedceaa6bdb79387fef2eafaea624f675e2ca354",
+          "bytes": 92624
+        },
+        {
+          "name": "UT_HandCard_20002.png",
+          "sha256": "265598e96fa8141c7bd43c4520453b326065e128edc18526bb3f49383a7dd2f9",
+          "bytes": 69871
+        },
+        {
+          "name": "UT_HandCard_20005.png",
+          "sha256": "21abacc7b571baa2354ccb373512d8ebea8a3cf3938469b264baa9ebd7a71414",
+          "bytes": 117248
+        },
+        {
+          "name": "UT_HandCard_20006.png",
+          "sha256": "c77376d38da34be8490c2141858f31ab2c297be00498080f1b6ab34e53aa8146",
+          "bytes": 131418
+        },
+        {
+          "name": "UT_HandCard_20008.png",
+          "sha256": "8658ca063702b29f7c3bc9994eea90c511df19054828982cdf0ab4010cfb6e97",
+          "bytes": 83275
+        },
+        {
+          "name": "UT_HandCard_20010.png",
+          "sha256": "3baa0e6654f595c610e0c0349230ed05c302020923d12b14a1ff77488d7fbfe7",
+          "bytes": 108191
+        },
+        {
+          "name": "UT_HandCard_20011.png",
+          "sha256": "b3efe7cc4215f93dc3372726a712cc378c358d540ffa65a413dd49648d926424",
+          "bytes": 104845
+        },
+        {
+          "name": "UT_HandCard_20013.png",
+          "sha256": "4bbd587906093146831797c510721642eb26a9c9b7cbb1b7bd319c43588760d0",
+          "bytes": 91709
+        },
+        {
+          "name": "UT_HandCard_20022.png",
+          "sha256": "5d1a6e91796f35a8f327b7a38c474286e39190d451f56487ab5f11ad9231803c",
+          "bytes": 116304
+        },
+        {
+          "name": "UT_HandCard_20027.png",
+          "sha256": "7f7e6b459114ad12c793210435342bcee174fdb170cbcaa7a2c60f4a1cd0bc5b",
+          "bytes": 126194
+        },
+        {
+          "name": "UT_HandCard_20028.png",
+          "sha256": "492ebda8629c33d4c17e342c1767caa1114d5d84bd1c399fc36e56fec7107e9f",
+          "bytes": 108175
+        },
+        {
+          "name": "UT_HandCard_20030.png",
+          "sha256": "6a76063bcc7ab434739c7551d1f75cd91ad3358f4cab92a97a51d4f450a01436",
+          "bytes": 108080
+        },
+        {
+          "name": "UT_HandCard_20032.png",
+          "sha256": "ae112d1e09ccd32530f6ed551f7cff80dc454e51a4cd761cb844dc74cfb943d4",
+          "bytes": 77866
+        },
+        {
+          "name": "UT_HandCard_21002.png",
+          "sha256": "ed1606ccfcdd944a2090fb525e2b06d5ee70e415b296e9a8d203e66db4d276c8",
+          "bytes": 173037
+        },
+        {
+          "name": "UT_HandCard_21003.png",
+          "sha256": "a289b0b934a52175546b3386bd4cd206c7b337884e51df8e228700cf16d471e4",
+          "bytes": 197554
+        },
+        {
+          "name": "UT_HandCard_21004.png",
+          "sha256": "fbe50ee413881ce9ce745e4cac95dcc0beca51f8aeee706700ec210c53e58aef",
+          "bytes": 190101
+        },
+        {
+          "name": "UT_HandCard_21005.png",
+          "sha256": "b917bcc63e422b08a6f13fdabcad7f7ad86e596377f28d3ce753b2b6464f5471",
+          "bytes": 87596
+        },
+        {
+          "name": "UT_HandCard_21006.png",
+          "sha256": "9bf0d6492023f3e793a1528b47099889c20f968cedcec052f0399039ae96a6fd",
+          "bytes": 98534
+        },
+        {
+          "name": "UT_HandCard_21007.png",
+          "sha256": "b445fc29e5caad9d3b93c358327f35ee3d3c2049e0d8b1c203220c0b295da1b2",
+          "bytes": 106028
+        },
+        {
+          "name": "UT_HandCard_21008.png",
+          "sha256": "8d09b786e3219d6e6e434402985ac8fea57e3528ee668840f497180dfeb3818d",
+          "bytes": 137631
+        },
+        {
+          "name": "UT_HandCard_21010.png",
+          "sha256": "e2b05a6b66aa62a05f9168a0d3e094aa16843d42ac32353a713dbe86577ccd0e",
+          "bytes": 141233
+        },
+        {
+          "name": "UT_Event_30002.png",
+          "sha256": "7eef328bee854f82261cd4e7e7e1ce1e21f1dc731bebb15a031bbdfa913ccf82",
+          "bytes": 120190
+        },
+        {
+          "name": "UT_Event_30006.png",
+          "sha256": "023c8ffd2a346fe0838c1feb76488c993db80b0df6326a2e907b7a4125864be5",
+          "bytes": 100628
+        },
+        {
+          "name": "UT_Event_30008.png",
+          "sha256": "3ddd031d7616dcf75e62c858995d4eebfd42473697a43fe0def99c8e5e33ba37",
+          "bytes": 135047
+        },
+        {
+          "name": "UT_Event_30010.png",
+          "sha256": "039a177e5c7b9c5585385497cb849249a57f0a2a85bed020203b73d15e9d0386",
+          "bytes": 128459
+        },
+        {
+          "name": "UT_Event_30012.png",
+          "sha256": "70d5aa2e33042c87c468c9fe14898d1017edaa01d50559d854c40f320c9ae083",
+          "bytes": 148083
+        },
+        {
+          "name": "UT_Event_30013.png",
+          "sha256": "d086366e997f270ea1b38f2d3cbbfa197ce3e39c736d10b62fae889e12d995a3",
+          "bytes": 95392
+        },
+        {
+          "name": "UT_Event_30014.png",
+          "sha256": "32b63cabf7aea4c7b69cdb29bfb227faa6052ddbb6924505a8317f7ad7485b9f",
+          "bytes": 74561
+        },
+        {
+          "name": "UT_Event_30019.png",
+          "sha256": "a7bd532c4c9ad75b2518e6fa32cb575a010fa9ce75956bf5f333b24df867237e",
+          "bytes": 162342
+        },
+        {
+          "name": "UT_Event_30202.png",
+          "sha256": "e2429e96b607151f050cde7efcfe4e5b311fca17be3df928a06459edd20ee5d1",
+          "bytes": 175143
+        },
+        {
+          "name": "UT_Event_30206.png",
+          "sha256": "d8d5c92db2df55fcfa844757bedaa35e8eb8c5d3870ef7e1448b00fe58fd668d",
+          "bytes": 64045
+        },
+        {
+          "name": "UT_MapEvent_31002.png",
+          "sha256": "95a6db5d3f766d7bc5f99b837a470b4e63c11d06f9a5294808161c4c17724113",
+          "bytes": 149398
+        },
+        {
+          "name": "UT_MapEvent_32023.png",
+          "sha256": "0773900740dd7d65b297b12708353754385b4da05241cabdef67a8e3288e0d4d",
+          "bytes": 229820
+        }
+      ]
+    }
+  ]
+}

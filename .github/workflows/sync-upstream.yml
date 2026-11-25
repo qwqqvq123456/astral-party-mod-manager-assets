@@ -1,0 +1,81 @@
+name: 同步上游资产
+
+# 每 6 小时检查一次上游，有新版本就同步清单并自动发布 Release。
+# 也可以在 Actions 页面手动触发，选择 lite / full 模式。
+
+on:
+  schedule:
+    # UTC 时间，对应北京时间 02:00 / 08:00 / 14:00 / 20:00
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "同步模式"
+        type: choice
+        options:
+          - lite
+          - full
+        default: lite
+      force:
+        description: "强制重传已存在的 Release 附件"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-upstream
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: 拉取上游并发布
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 准备 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 同步文件树并发布 Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          MODE="${{ inputs.mode || 'lite' }}"
+          FORCE="${{ inputs.force || 'false' }}"
+
+          ARGS=(--mode "$MODE" --push)
+          if [ "$MODE" = "full" ]; then
+            ARGS+=(--token "$GH_TOKEN")
+          fi
+          if [ "$FORCE" = "true" ]; then
+            ARGS+=(--force)
+          fi
+
+          echo "执行：python3 scripts/sync.py ${ARGS[*]}"
+          python3 scripts/sync.py "${ARGS[@]}"
+
+      - name: 输出同步摘要
+        if: always()
+        run: |
+          {
+            echo "### 同步结果"
+            echo ""
+            echo "- 模式：\`${{ inputs.mode || 'lite' }}\`"
+            echo "- 触发：\`${{ github.event_name }}\`"
+            echo "- 提交：\`$(git rev-parse --short HEAD 2>/dev/null || echo n/a)\`"
+            echo ""
+            echo "最近一次提交："
+            echo '```'
+            git log -1 --pretty='%h %ad %s' --date=short 2>/dev/null || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

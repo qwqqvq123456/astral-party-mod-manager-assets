@@ -1,0 +1,69 @@
+{
+  "schema": 2,
+  "bundles": [
+    {
+      "key": "cards",
+      "version": "4",
+      "bundleUrl": "https://github.com/qwqqvq123456/astral-party-mod-manager-assets/releases/download/preview-v4/APMM-previews-cards-4.zip",
+      "sha256": "97bf1ae442c2cc64ae51a0ed9510237c7d7feb84cbb6e21f8af4bc2449fa45de",
+      "bytes": 4699058,
+      "files": 182
+    },
+    {
+      "key": "chips",
+      "version": "4",
+      "bundleUrl": "https://github.com/qwqqvq123456/astral-party-mod-manager-assets/releases/download/preview-v4/APMM-previews-chips-4.zip",
+      "sha256": "d8ae5216d3043d638b9db7a382e3ec7b1d3c538bd54ffc5a9147787f45f8c918",
+      "bytes": 538354,
+      "files": 79
+    },
+    {
+      "key": "cursors",
+      "version": "4",
+      "bundleUrl": "https://github.com/qwqqvq123456/astral-party-mod-manager-assets/releases/download/preview-v4/APMM-previews-cursors-4.zip",
+      "sha256": "dc01b7f47f94385223ef313e26df4e1d6a1c1a3471cee25e7cb19108bbbea100",
+      "bytes": 3762,
+      "files": 2
+    },
+    {
+      "key": "heroes-art",
+      "version": "4",
+      "bundleUrl": "https://github.com/qwqqvq123456/astral-party-mod-manager-assets/releases/download/preview-v4/APMM-previews-heroes-art-4.zip",
+      "sha256": "7d55db38c870dd9dba1b72751a284f53c1b53df70ba95f247596381633e00ada",
+      "bytes": 4050342,
+      "files": 304
+    },
+    {
+      "key": "heroes-busts",
+      "version": "4",
+      "bundleUrl": "https://github.com/qwqqvq123456/astral-party-mod-manager-assets/releases/download/preview-v4/APMM-previews-heroes-busts-4.zip",
+      "sha256": "92add99abb1f5f887cea64951a06770c8dba9d9d430d1827e71d9471343e8d30",
+      "bytes": 33176556,
+      "files": 322
+    },
+    {
+      "key": "heroes-cards",
+      "version": "4",
+      "bundleUrl": "https://github.com/qwqqvq123456/astral-party-mod-manager-assets/releases/download/preview-v4/APMM-previews-heroes-cards-4.zip",
+      "sha256": "5d0299991a5cbebe9418075f6be0659a5ff9e9906a0744cba0bd1cdca280494f",
+      "bytes": 41591618,
+      "files": 616
+    },
+    {
+      "key": "heroes-other",
+      "version": "4",
+      "bundleUrl": "https://github.com/qwqqvq123456/astral-party-mod-manager-assets/releases/download/preview-v4/APMM-previews-heroes-other-4.zip",
+      "sha256": "eb6f1875d0b5ce0d36dfb36a3b7dc0d584637ebdc93bbe0fc66732c00d444e7b",
+      "bytes": 9443000,
+      "files": 468
+    },
+    {
+      "key": "monsters",
+      "version": "4",
+      "bundleUrl": "https://github.com/qwqqvq123456/astral-party-mod-manager-assets/releases/download/preview-v4/APMM-previews-monsters-4.zip",
+      "sha256": "c7a5e4ebbba5e0b8d68078ecc02cb0492d535c8d8a14c7b19b8990a53b3391b7",
+      "bytes": 11469632,
+      "files": 214
+    }
+  ]
+}

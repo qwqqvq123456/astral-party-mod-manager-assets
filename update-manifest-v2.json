@@ -1,0 +1,21 @@
+{
+  "schema": 2,
+  "version": "0.4.11",
+  "notes": "总览版本卡直达更新分区；自动检查默认开启，新版本提醒保留至用户处理。 更新检查间隔改为分钟，默认 60 分钟，支持一分钟调度，并兼容旧小时设置的实际时长。 检测到更新后一次点击完成下载、校验、安装与重启，取消或失败不进入安装。",
+  "assets": [
+    {
+      "platform": "win-x86_64",
+      "kind": "portable",
+      "url": "https://github.com/qwqqvq123456/astral-party-mod-manager-assets/releases/download/v0.4.11/APMM-0.4.11-windows-x86_64-portable.zip",
+      "sha256": "3245c37a79da3daccf48bc18f8cf6242eaf10caa0849021b517c8c9c5212e85b",
+      "bytes": 5674205
+    },
+    {
+      "platform": "win-x86_64",
+      "kind": "msi",
+      "url": "https://github.com/qwqqvq123456/astral-party-mod-manager-assets/releases/download/v0.4.11/APMM-0.4.11-windows-x86_64.msi",
+      "sha256": "8bb3381c5078a8db8562e8b1bfa880d8dde31b735d62a5a2d437b21a85e24727",
+      "bytes": 6012928
+    }
+  ]
+}

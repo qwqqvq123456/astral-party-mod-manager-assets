@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "version": "0.4.11",
+  "notes": "总览版本卡直达更新分区；自动检查默认开启，新版本提醒保留至用户处理。 更新检查间隔改为分钟，默认 60 分钟，支持一分钟调度，并兼容旧小时设置的实际时长。 检测到更新后一次点击完成下载、校验、安装与重启，取消或失败不进入安装。",
+  "assets": [
+    {
+      "platform": "win-x86_64",
+      "url": "https://github.com/qwqqvq123456/astral-party-mod-manager-assets/releases/download/v0.4.11/APMM-0.4.11-windows-x86_64-legacy-bridge.zip",
+      "sha256": "171bf1398eceabe7a4de4dcfed822fa1b1f6d956a7e5869c0afdfcb7e88620ed",
+      "bytes": 5919021
+    }
+  ]
+}
